@@ -1,0 +1,45 @@
+<table id="example2" class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Nama Nominal</th>
+      <th>QTY</th>
+      <th>Harga</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <td colspan="5" class="text-center">Data masih kosong</td> -->
+    <% for (let i = 0; i < data.length; i++) { %>
+    <tr>
+      <% if (!data.length) { %>
+      <td colspan="5">Data masih kosong</td>
+      <% } %>
+      <td><%= i + 1 %></td>
+      <td><%= data[i].coinName %></td>
+      <td><%= data[i].cointQuantity %></td>
+      <td><%= data[i].price %></td>
+
+      <td>
+        <form
+          action="/nominal/delete/<%= data[i]._id %>?_method=DELETE"
+          method="post"
+        >
+          <a href="/nominal/edit/<%= data[i]._id %>" class="btn btn-warning">
+            <i class="nav-icon fas fa-pencil-alt"></i>
+            Ubah
+          </a>
+          <button
+            onclick="return confirm('Apakah anda ingin menghapus data ini?')"
+            class="btn btn-danger"
+            type="submit"
+          >
+            <i class="nav-icon fas fa-trash"></i>
+            Hapus
+          </button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
