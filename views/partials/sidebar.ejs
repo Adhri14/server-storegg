@@ -24,21 +24,30 @@
         role="menu"
         data-accordion="false"
       >
+      <% 
+      
+        const home = title === 'Home' ? 'active' : '';
+        const nominal = title === 'Nominal' || title === 'Edit Nominal' || title === 'Tambah Nominal' ? 'active' : '';
+        const category = title === 'Kategori' || title === 'Edit Kategori' || title === 'Tambah Kategori' ? 'active' : '';
+
+      
+      
+      %>
         <li class="nav-item">
-          <a href="/" class="nav-link">
+          <a href="/" class="nav-link <%= home %>" >
             <i class="nav-icon fas fa-home"></i>
             <p>Home</p>
           </a>
         </li>
         <li class="nav-header">Master</li>
         <li class="nav-item">
-          <a href="/category" class="nav-link">
+          <a href="/category" class="nav-link <%= category %>">
             <i class="nav-icon far fa-calendar-alt"></i>
             <p>Kategori</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="/nominal" class="nav-link">
+          <a href="/nominal" class="nav-link <%= nominal %>">
             <i class="nav-icon fas fa-tasks"></i>
             <p>Nominal</p>
           </a>

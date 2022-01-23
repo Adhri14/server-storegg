@@ -2,9 +2,9 @@
   <thead>
     <tr>
       <th>No.</th>
-      <th>Nama Nominal</th>
-      <th>QTY</th>
-      <th>Harga</th>
+      <th>Nama Koin</th>
+      <th>Jumlah Koin</th>
+      <th>Harga Koin</th>
       <th>Aksi</th>
     </tr>
   </thead>
@@ -12,13 +12,12 @@
     <!-- <td colspan="5" class="text-center">Data masih kosong</td> -->
     <% for (let i = 0; i < data.length; i++) { %>
     <tr>
-      <% if (!data.length) { %>
-      <td colspan="5">Data masih kosong</td>
-      <% } %>
+      <% const price = data[i].price; const replceToMoney = new
+      Intl.NumberFormat('id-ID').format(price) %>
       <td><%= i + 1 %></td>
-      <td><%= data[i].coinName %></td>
+      <td><%= data[i].cointName %></td>
       <td><%= data[i].cointQuantity %></td>
-      <td><%= data[i].price %></td>
+      <td>Rp. <%= replceToMoney %></td>
 
       <td>
         <form
