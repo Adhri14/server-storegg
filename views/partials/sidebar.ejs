@@ -29,6 +29,7 @@
         const home = title === 'Home' ? 'active' : '';
         const nominal = title === 'Nominal' || title === 'Edit Nominal' || title === 'Tambah Nominal' ? 'active' : '';
         const category = title === 'Kategori' || title === 'Edit Kategori' || title === 'Tambah Kategori' ? 'active' : '';
+        const voucher = title === 'Voucher' || title === 'Edit Voucher' || title === 'Tambah Voucher' ? 'active' : '';
 
       
       
@@ -53,7 +54,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="pages/calendar.html" class="nav-link">
+          <a href="/voucher" class="nav-link <%= voucher %>">
             <i class="nav-icon far fa-image"></i>
             <p>Voucher</p>
           </a>
