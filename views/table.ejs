@@ -1,0 +1,33 @@
+<table id="example2" class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Nama User</th>
+      <th>Status</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <td colspan="5" class="text-center">Data masih kosong</td> -->
+    <% for (let i = 0; i < users.length; i++) { %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td><%= users[i].name %></td>
+      <td>
+        <span
+          class="badge badge-<%= users[i].status === 'Y' ? 'success' : 'danger' %>"
+          ><%= users[i].status === 'Y' ? 'Active' : 'Non Active' %></span
+        >
+      </td>
+      <td><%= users[i].email %></td>
+      <td>
+        <span
+          class="badge badge-<%= users[i].role === 'admin' ? 'success' : 'info' %>"
+          ><%= users[i].role === 'admin' ? 'Admin' : 'User' %></span
+        >
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>

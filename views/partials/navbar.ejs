@@ -13,17 +13,17 @@
   <ul class="navbar-nav ml-auto">
     <!-- Notifications Dropdown Menu -->
     <li class="nav-item dropdown">
-      <a class="nav-link" data-toggle="dropdown" href="#"> Username </a>
+      <a class="nav-link" data-toggle="dropdown" href="#"> <%= user %> </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        <a href="#" class="dropdown-item">
-          <i class="fas fa-user mr-2"></i>
-          <span class="text-muted text-sm">Profile</span>
-        </a>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
-          <i class="fas fa-sign-out-alt mr-2"></i>
-          <span class="text-muted text-sm">Logout</span>
-        </a>
+        <div class="dropdown-item">
+          <form action="/logout" method="post">
+            <button type="submit" class="w-100 text-left btn">
+              <i class="fas fa-sign-out-alt mr-2"></i>
+              <span class="text-muted text-sm">Logout</span>
+            </button>
+          </form>
+        </div>
       </div>
     </li>
   </ul>

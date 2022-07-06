@@ -4,9 +4,9 @@
       <th>No.</th>
       <th>Nama Game</th>
       <th>Status</th>
-      <th>Nama Kategori Game</th>
+      <th class="colomn-header">Nama Kategori Game</th>
       <th>Jumlah Koin</th>
-      <th>Aksi</th>
+      <th class="text-center">Aksi</th>
     </tr>
   </thead>
   <tbody>
@@ -41,7 +41,16 @@
       </td> -->
 
       <td>
-        <form action="" style="display: inline-block">
+        <form
+          action="/voucher/edit-status/<%= voucher[i]._id %>?_method=PUT"
+          style="display: inline-block"
+          method="post"
+        >
+          <input
+            type="hidden"
+            name="status"
+            value="<%= voucher[i].status === 'Y' ? 'N' : 'Y' %>"
+          />
           <button type="submit" class="btn btn-primary btn-sm">
             <i class="fas fa-folder"></i>
             <% if (voucher[i].status === 'Y') { %> Matikan <% } else { %>
@@ -59,6 +68,13 @@
           >
             <i class="nav-icon fas fa-pencil-alt"></i>
             Ubah
+          </a>
+          <a
+            href="/voucher/detail/<%= voucher[i]._id %>"
+            class="btn btn-info btn-sm"
+          >
+            <i class="nav-icon fas fa-eye"></i>
+            Detail
           </a>
           <button
             onclick="return confirm('Apakah anda ingin menghapus data ini?')"

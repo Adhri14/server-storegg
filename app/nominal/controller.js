@@ -2,6 +2,7 @@ const Nominal = require("./model");
 module.exports = {
   index: async (req, res) => {
     try {
+      const user = req.session.user;
       const alertMessage = req.flash("alertMessage");
       const alertStatus = req.flash("alertStatus");
 
@@ -11,6 +12,7 @@ module.exports = {
         title: "Nominal",
         data: nominal,
         message: alert,
+        user: user.name,
       });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
@@ -20,7 +22,11 @@ module.exports = {
   },
   viewCreate: async (req, res) => {
     try {
-      res.render("admin/nominal/create", { title: "Tambah Nominal" });
+      const user = req.session.user;
+      res.render("admin/nominal/create", {
+        title: "Tambah Nominal",
+        user: user.name,
+      });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
       req.flash("alertStatus", "danger");
@@ -43,13 +49,18 @@ module.exports = {
   },
   viewEdit: async (req, res) => {
     try {
+      const user = req.session.user;
       const { id } = req.params;
       let nominal = await Nominal.findOne({ _id: id });
-      res.render("admin/nominal/edit", { nominal, title: "Edit Nominal" });
+      res.render("admin/nominal/edit", {
+        nominal,
+        title: "Edit Nominal",
+        user: user.name,
+      });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
       req.flash("alertStatus", "danger");
-      res.redirect("/category");
+      res.redirect("/nominal");
     }
   },
   actionEdit: async (req, res) => {

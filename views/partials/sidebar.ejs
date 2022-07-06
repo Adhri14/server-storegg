@@ -1,14 +1,13 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="index3.html" class="brand-link">
+  <a href="/dashboard" class="brand-link">
     <img
-      src="/adminlte/dist/img/AdminLTELogo.png"
-      alt="AdminLTE Logo"
-      class="brand-image img-circle elevation-3"
-      style="opacity: 0.8"
+      src="/images/logo.svg"
+      alt="Admin Store GG Logo"
+      class="brand-image img-circle"
     />
-    <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <span class="brand-text font-weight-light">Admin Store GG</span>
   </a>
 
   <!-- Sidebar -->
@@ -30,14 +29,15 @@
         const nominal = title === 'Nominal' || title === 'Edit Nominal' || title === 'Tambah Nominal' ? 'active' : '';
         const category = title === 'Kategori' || title === 'Edit Kategori' || title === 'Tambah Kategori' ? 'active' : '';
         const voucher = title === 'Voucher' || title === 'Edit Voucher' || title === 'Tambah Voucher' ? 'active' : '';
-
-      
-      
+        const bank = title === 'Bank' || title === 'Edit Bank' || title === 'Tambah Bank' ? 'active' : '';
+        const payment = title === 'Payment' || title === 'Edit Payment' || title === 'Tambah Payment' ? 'active' : '';
+        const transaction = title === 'Transaksi' ? 'active' : '';
+         
       %>
         <li class="nav-item">
-          <a href="/" class="nav-link <%= home %>" >
+          <a href="/dashboard" class="nav-link <%= home %>" >
             <i class="nav-icon fas fa-home"></i>
-            <p>Home</p>
+            <p>Beranda</p>
           </a>
         </li>
         <li class="nav-header">Master</li>
@@ -61,20 +61,20 @@
         </li>
         <li class="nav-header">Metode Pembayaran</li>
         <li class="nav-item">
-          <a href="pages/calendar.html" class="nav-link">
+          <a href="/bank" class="nav-link <%= bank %>">
             <i class="nav-icon fas fa-money-check"></i>
             <p>Bank</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="pages/calendar.html" class="nav-link">
+          <a href="/payment" class="nav-link <%= payment %>">
             <i class="nav-icon fas fa-money-check-alt"></i>
             <p>Jenis Pembayaran</p>
           </a>
         </li>
         <li class="nav-header">Transaksi</li>
         <li class="nav-item">
-          <a href="pages/calendar.html" class="nav-link">
+          <a href="/transaction" class="nav-link <%= transaction %> ">
             <i class="nav-icon fas fa-shopping-cart"></i>
             <p>Transaksi</p>
           </a>
@@ -85,4 +85,3 @@
   </div>
   <!-- /.sidebar -->
 </aside>
-;

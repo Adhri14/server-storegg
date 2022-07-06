@@ -1,0 +1,73 @@
+<table id="example2" class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Type Pembayaran</th>
+      <th>Status</th>
+      <th>Bank Transfer</th>
+      <th class="text-center">Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <td colspan="5" class="text-center">Data masih kosong</td> -->
+    <% for (let i = 0; i < payment.length; i++) { %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td><%= payment[i].type %></td>
+      <td>
+        <span
+          class="badge badge-<%= payment[i].status === 'Y' ? 'success' : 'danger' %>"
+          ><%= payment[i].status === 'Y' ? 'Active' : 'Non Active' %></span
+        >
+      </td>
+      <td>
+        <% payment[i]?.banks.forEach(item => { %>
+        <span class="badge badge-info">
+          <%= item.name %> - <%= item.bankName %> - <%= item.noRekening %>
+        </span>
+        <% }) %>
+      </td>
+
+      <td>
+        <form
+          action="/payment/edit-status/<%= payment[i]._id %>?_method=PUT"
+          style="display: inline-block"
+          method="post"
+        >
+          <input
+            type="hidden"
+            name="status"
+            value="<%= payment[i].status === 'Y' ? 'N' : 'Y' %>"
+          />
+          <button type="submit" class="btn btn-primary btn-sm">
+            <i class="fas fa-folder"></i>
+            <% if (payment[i].status === 'Y') { %> Matikan <% } else { %>
+            Hidupkan <% } %>
+          </button>
+        </form>
+        <form
+          action="/payment/delete/<%= payment[i]._id %>?_method=DELETE"
+          method="post"
+          style="display: inline-block"
+        >
+          <a
+            href="/payment/edit/<%= payment[i]._id %>"
+            class="btn btn-warning btn-sm"
+          >
+            <i class="nav-icon fas fa-pencil-alt"></i>
+            Ubah
+          </a>
+          <button
+            onclick="return confirm('Apakah anda ingin menghapus data ini?')"
+            class="btn btn-danger btn-sm"
+            type="submit"
+          >
+            <i class="nav-icon fas fa-trash"></i>
+            Hapus
+          </button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>

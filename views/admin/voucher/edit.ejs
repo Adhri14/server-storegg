@@ -1,5 +1,6 @@
 <%- include ../../partials/header.ejs %> <%- include ../../partials/navbar.ejs
-%> <%- include ../../partials/sidebar.ejs %>
+%> <%- include ../../partials/sidebar.ejs %><% include
+../../partials/loading.ejs %>
 
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -25,7 +26,7 @@
   <section class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12">
+        <div class="col-lg">
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Form ubah voucher <%= voucher.name %></h3>
@@ -33,7 +34,7 @@
             <!-- /.card-header -->
             <!-- form start -->
             <form
-              action="/voucher/create"
+              action="/voucher/edit/<%= voucher._id%>?_method=PUT"
               method="post"
               enctype="multipart/form-data"
             >
@@ -81,10 +82,16 @@
                       name="nominals"
                       style="width: 100%; height: 52px"
                     >
-                      <% nominal.forEach(item => { %> <% const price =
-                      item.price; const replceToMoney = new
-                      Intl.NumberFormat('id-ID').format(price) %>
-                      <option value="<%= item._id %>">
+                      <% nominal.forEach(item => { %> 
+                      <% const price = item.price; const replceToMoney = new Intl.NumberFormat('id-ID').format(price) %>
+                      <option 
+                      value="<%= item._id %>"
+                      <% voucher.nominals.forEach(itemNominal => { %>
+                       <% if (item._id.toString() === itemNominal._id.toString()) { %>
+                        selected
+                       <% } %>
+                      <% }) %>
+                      >
                         <%= item.cointName %> => Rp. <%= replceToMoney %>
                       </option>
                       <% }) %>
@@ -101,7 +108,9 @@
                     placeholder="Pilih foto"
                   />
                   <br />
-                  <img src="" id="perview" />
+                  <div class="thumbnail-pic">
+                    <img src="http://localhost:4000/uploads/<%= voucher.thumbnail %> " id="perview" />
+                  </div>
                 </div>
               </div>
               <!-- /.card-body -->

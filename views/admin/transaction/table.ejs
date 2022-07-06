@@ -1,0 +1,88 @@
+<table id="example2" class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Nama Game</th>
+      <th>Item</th>
+      <th>Total Harga</th>
+      <th>Nama Player</th>
+      <th>Status</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <td colspan="5" class="text-center">Data masih kosong</td> -->
+    <% for (let i = 0; i < transaction.length; i++) { %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <img
+              width="100"
+              height="140"
+              src="http://localhost:4000/uploads/<%=
+            transaction[i].historyVoucherTopup?.thumbnail %> "
+              alt="Thumbnail"
+            />
+          </li>
+        </ul>
+        <%= transaction[i].historyVoucherTopup?.gameName; %>
+      </td>
+      <td>
+        <%= transaction[i].historyVoucherTopup.coinQuantity %> <%=
+        transaction[i].historyVoucherTopup.coinName %>
+      </td>
+
+      <td>
+        <% const price = transaction[i].value %> <% const replaceToMoney = new
+        Intl.NumberFormat('id-ID', {style: 'currency', currency:
+        'IDR'}).format(price); %> <%= replaceToMoney %>
+      </td>
+      <td><%= transaction[i].player?.name ?? '-' %></td>
+      <td>
+        <% if (transaction[i].status === 'pending') { %>
+        <span class="badge badge-warning"><%= transaction[i].status %> </span>
+        <% } else if (transaction[i].status === 'success') { %>
+        <span class="badge badge-success"><%= transaction[i].status %> </span>
+        <% } else { %>
+        <span class="badge badge-danger"><%= transaction[i].status %> </span>
+        <% } %>
+      </td>
+      <td>
+        <% if (transaction[i].status === 'failed' || transaction[i].status ===
+        'success') { %> <% if (transaction[i].status === 'failed') { %>
+        <span class="badge badge-danger"> <h4>Transaksi di tolak</h4> </span>
+        <% } %> <% if (transaction[i].status === 'success') { %>
+        <span class="badge badge-success">
+          <h4>Transaksi telah selesai</h4>
+        </span>
+        <% } %> <% } else { %>
+        <form
+          style="display: inline-block"
+          action="/transaction/rejected/<%= transaction[i]._id %>?_method=PUT"
+          method="post"
+        >
+          <input type="hidden" name="status" value="failed" />
+          <button type="submit" class="btn btn-danger">
+            <i class="fa fa-times-circle"></i>
+            Tolak
+          </button>
+        </form>
+        <form
+          style="display: inline-block"
+          action="/transaction/approved/<%= transaction[i]._id %>?_method=PUT"
+          method="post"
+        >
+          <input type="hidden" name="status" value="success" />
+          <button type="submit" class="btn btn-info">
+            <i class="fa fa-check"></i>
+            Terima
+          </button>
+        </form>
+        <% } %>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
