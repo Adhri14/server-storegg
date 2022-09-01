@@ -117,6 +117,7 @@ module.exports = {
         category,
         title: "Edit Voucher",
         user: user.name,
+        base_url: config.baseUrl,
       });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
@@ -212,6 +213,7 @@ module.exports = {
       res.render("admin/voucher/detail", {
         title: "Detail Game",
         voucher,
+        base_url: config.baseUrl,
       });
     } catch (error) {
       res.redirect("/voucher");

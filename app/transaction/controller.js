@@ -1,3 +1,4 @@
+const config = require("../../config");
 const Transaction = require("./model");
 
 module.exports = {
@@ -14,6 +15,7 @@ module.exports = {
         message: alert,
         user: user.name,
         title: "Transaksi",
+        base_url: config.baseUrl,
       });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
