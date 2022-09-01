@@ -211,10 +211,10 @@ module.exports = {
         .populate("category")
         .populate("nominals");
       res.render("admin/voucher/detail", {
-        title: "Detail Game",
         voucher,
-        base_url: config.baseUrl,
+        title: "Detail Voucher",
         user: user.name,
+        base_url: config.baseUrl,
       });
     } catch (error) {
       res.redirect("/voucher");

@@ -4,5 +4,5 @@ const { viewSignIn, actionSignIn, actionLogout } = require("./controller");
 
 router.get("/", viewSignIn);
 router.post("/", actionSignIn);
-router.post("/", actionLogout);
+router.post("/logout", actionLogout);
 module.exports = router;
