@@ -214,6 +214,7 @@ module.exports = {
         title: "Detail Game",
         voucher,
         base_url: config.baseUrl,
+        user: user.name,
       });
     } catch (error) {
       res.redirect("/voucher");
