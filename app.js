@@ -19,14 +19,14 @@ const playerRouter = require("./app/player/router");
 const authRouter = require("./app/auth/router");
 const cors = require("cors");
 
-app.use(cors());
-
 var app = express();
 const URL = "/api/v1";
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
+app.use(cors());
 
 app.use(
   session({
