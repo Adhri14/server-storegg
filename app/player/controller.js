@@ -31,7 +31,7 @@ module.exports = {
         .populate("nominals")
         .populate("user", "_id name phoneNumber")
         .populate("category");
-      const dataPayment = await Payment.find();
+      const dataPayment = await Payment.find().populate("banks");
 
       if (!dataPayment) {
         return res
