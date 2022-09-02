@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 let nominalSchema = mongoose.Schema(
   {
-    cointQuantity: {
+    coinQuantity: {
       type: Number,
       default: 0,
     },
-    cointName: {
+    coinName: {
       type: String,
       required: [true, "Nama koin harus diisi"],
     },
