@@ -111,10 +111,9 @@ module.exports = {
       });
   },
   signout: (req, res) => {
-    const token = req.token;
     // if (!req.session) {
     //   return res.status(404).json({ message: "User tidak ditemukan" });
     // }
-    res.status(200).json({ data: token });
+    res.status(200).json({ data: "Message" });
   },
 };
