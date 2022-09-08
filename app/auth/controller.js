@@ -110,11 +110,11 @@ module.exports = {
         next();
       });
   },
-  // signout: (req, res) => {
-  //   if (!req.session) {
-  //     return res.status(404).json({ message: "User tidak ditemukan" });
-  //   }
-  //   req.session.destroy();
-  //   res.status(200).json({ message: "Berhasil logout" });
-  // },
+  signout: (req, res) => {
+    const token = req.token;
+    // if (!req.session) {
+    //   return res.status(404).json({ message: "User tidak ditemukan" });
+    // }
+    res.status(200).json({ data: token });
+  },
 };
