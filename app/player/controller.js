@@ -31,15 +31,26 @@ module.exports = {
         .populate("nominals")
         .populate("user", "_id name phoneNumber")
         .populate("category");
+      const dataPayment = await Payment.find().populate("banks");
+
+      if (!dataPayment) {
+        return res
+          .status(404)
+          .json({ message: "Metode pembayaran tidak ditemukan.!" });
+      }
 
       if (!dataVoucher) {
         return res
           .status(404)
           .json({ message: "Voucher game tidak ditemukan.!" });
       }
-      res
-        .status(200)
-        .json({ message: "Data berhasil diambil", data: dataVoucher });
+      res.status(200).json({
+        message: "Data berhasil diambil",
+        data: {
+          detail: dataVoucher,
+          payment: dataPayment,
+        },
+      });
     } catch (error) {
       res
         .status(500)
