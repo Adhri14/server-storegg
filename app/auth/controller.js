@@ -85,7 +85,8 @@ module.exports = {
                   phoneNumber: player.phoneNumber,
                 },
               },
-              config.jwtKey
+              config.jwtKey,
+              { expiresIn: "1d" }
             );
             delete player._doc.password;
             res.status(200).json({
