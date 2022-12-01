@@ -66,10 +66,10 @@ module.exports = {
     actionEdit: async (req, res) => {
         try {
             const { id } = req.params;
-            const { cointName, cointQuantity, price } = req.body;
+            const { coinName, coinQuantity, price } = req.body;
             await Nominal.findOneAndUpdate(
                 { _id: id },
-                { cointName, cointQuantity, price }
+                { coinName, coinQuantity, price }
             );
             req.flash("alertMessage", "Berhasil ubah nominal");
             req.flash("alertStatus", "success");
