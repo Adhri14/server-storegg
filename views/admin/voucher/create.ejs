@@ -3,135 +3,145 @@
 ../../partials/loading.ejs %>
 
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>Form Voucher</h1>
-        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/voucher">Voucher</a></li>
-            <li class="breadcrumb-item active">Tambah</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-    <!-- /.container-fluid -->
-  </section>
-
-  <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Form tambah voucher</h3>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Form Voucher</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item">
+                            <a href="/voucher">Voucher</a>
+                        </li>
+                        <li class="breadcrumb-item active">Tambah</li>
+                    </ol>
+                </div>
             </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form
-              action="/voucher/create"
-              method="post"
-              enctype="multipart/form-data"
-            >
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="name">Masukan Nama Game</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="name"
-                    name="name"
-                    placeholder="Masukan Nama Game"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="category">Kategori</label>
-                  <select
-                    class="form-control select2"
-                    id="category"
-                    name="category"
-                    style="width: 100%; height: 52px"
-                  >
-                    <option selected="selected">Pilih Kategori</option>
-                    <% for (let i = 0; i < category.length; i++) { %>
-                    <option value="<%= category[i]._id %>">
-                      <%= category[i].name %>
-                    </option>
-                    <% } %>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="nominal">Nominal</label>
-                  <div class="select2-purple">
-                    <select
-                      class="form-control select2"
-                      multiple="multiple"
-                      data-placeholder="Pilih nominal"
-                      id="nominal"
-                      name="nominals"
-                      style="width: 100%; height: 52px"
-                    >
-                      <% nominal.forEach(item => { %> <% const price =
-                      item.price; const replceToMoney = new
-                      Intl.NumberFormat('id-ID').format(price) %>
-                      <option value="<%= item._id %>">
-                        <%= item.cointName %> => Rp. <%= replceToMoney %>
-                      </option>
-                      <% }) %>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="image">Pilih foto</label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="image"
-                    name="image"
-                    placeholder="Pilih foto"
-                  />
-                  <br />
-                  <img src="" id="perview" />
-                </div>
-              </div>
-              <!-- /.card-body -->
-
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Simpan</button>
-              </div>
-            </form>
-          </div>
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-  </section>
-  <!-- /.content -->
+        <!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Form tambah voucher</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form
+                            action="/voucher/create"
+                            method="post"
+                            enctype="multipart/form-data"
+                        >
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="name">Masukan Nama Game</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="name"
+                                        name="name"
+                                        placeholder="Masukan Nama Game"
+                                        required
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="category">Kategori</label>
+                                    <select
+                                        class="form-control select2"
+                                        id="category"
+                                        name="category"
+                                        style="width: 100%; height: 52px"
+                                    >
+                                        <option selected="selected">
+                                            Pilih Kategori
+                                        </option>
+                                        <% for (let i = 0; i < category.length;
+                                        i++) { %>
+                                        <option value="<%= category[i]._id %>">
+                                            <%= category[i].name %>
+                                        </option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nominal">Nominal</label>
+                                    <div class="select2-purple">
+                                        <select
+                                            class="form-control select2"
+                                            multiple="multiple"
+                                            data-placeholder="Pilih nominal"
+                                            id="nominal"
+                                            name="nominals"
+                                            style="width: 100%; height: 52px"
+                                        >
+                                            <% nominal.forEach(item => { %> <%
+                                            const price = item.price; const
+                                            replceToMoney = new
+                                            Intl.NumberFormat('id-ID').format(price)
+                                            %>
+                                            <option value="<%= item._id %>">
+                                                <%= item.coinQuantity %> => Rp.
+                                                <%= replceToMoney %>
+                                            </option>
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image">Pilih foto</label>
+                                    <input
+                                        type="file"
+                                        class="form-control"
+                                        id="image"
+                                        name="image"
+                                        placeholder="Pilih foto"
+                                    />
+                                    <br />
+                                    <img src="" id="perview" />
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">
+                                    Simpan
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
 </div>
 
 <%- include ../../partials/footer.ejs %> <%- include ../../partials/js.ejs %>
 
 <script>
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        $("#perview").attr("src", e.target.result);
-        $("#perview").attr("width", "10%");
-        $("#perview").attr("height", "10%");
-      };
-      reader.readAsDataURL(input.files[0]);
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                $("#perview").attr("src", e.target.result);
+                $("#perview").attr("width", "10%");
+                $("#perview").attr("height", "10%");
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
     }
-  }
-  $("#image").change(function () {
-    readURL(this);
-  });
+    $("#image").change(function () {
+        readURL(this);
+    });
 </script>
