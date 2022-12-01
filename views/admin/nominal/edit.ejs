@@ -29,7 +29,7 @@
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">
-                Form ubah nominal "<%= nominal.cointName %>"
+                Form ubah nominal "<%= nominal.coinName %>"
               </h3>
             </div>
             <!-- /.card-header -->
@@ -44,23 +44,23 @@
                   <select
                     class="form-control select2"
                     id="name"
-                    name="cointName"
+                    name="coinName"
                     style="width: 100%; height: 52px"
                   >
                     <option selected="selected">Pilih Koin</option>
                     <option 
                     value="Gold"
-                    <% if (nominal.cointName === 'Gold') { %>
+                    <% if (nominal.coinName === 'Gold') { %>
                       selected
                     <% } %>
                     >Gold</option>
                     <option value="Diamond"
-                    <% if (nominal.cointName === 'Diamond') { %>
+                    <% if (nominal.coinName === 'Diamond') { %>
                       selected
                     <% } %>
                     >Diamond</option>
                     <option value="Jewel"
-                    <% if (nominal.cointName === 'Jewel') { %>
+                    <% if (nominal.coinName === 'Jewel') { %>
                       selected
                     <% } %>
                     >Jewel</option>
@@ -72,9 +72,9 @@
                     type="number"
                     class="form-control"
                     id="qty"
-                    name="cointQuantity"
+                    name="coinQuantity"
                     placeholder="Masukan jumlah koin"
-                    value="<%= nominal.cointQuantity %>"
+                    value="<%= nominal.coinQuantity %>"
                   />
                 </div>
                 <div class="form-group">
