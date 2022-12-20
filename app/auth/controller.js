@@ -13,7 +13,7 @@ module.exports = {
         let tmp_path = req.file.path;
         let originalExt =
           req.file.originalname.split(".")[
-            req.file.originalname.split(".").length - 1
+          req.file.originalname.split(".").length - 1
           ];
         let filename = req.file.filename + "." + originalExt;
         let target_path = path.resolve(
@@ -91,7 +91,7 @@ module.exports = {
             delete player._doc.password;
             res.status(200).json({
               message: "Berhasil Login",
-              data: { token, user: player },
+              data: { token },
             });
           } else {
             res
