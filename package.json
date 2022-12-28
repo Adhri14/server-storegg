@@ -5,7 +5,8 @@
     "scripts": {
         "start": "nodemon ./bin/www",
         "dev": "env-cmd -f ./.env.local nodemon ./bin/www",
-        "prod": "env-cmd -f ./.env nodemon ./bin/www"
+        "prod": "env-cmd -f ./.env nodemon ./bin/www",
+        "build": "node ./bin/www"
     },
     "dependencies": {
         "admin-lte": "^3.1.0",
